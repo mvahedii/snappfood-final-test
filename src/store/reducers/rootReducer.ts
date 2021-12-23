@@ -1,8 +1,15 @@
-import { combineReducers } from "redux";
+import {combineReducers, Reducer} from 'redux';
+import vendorsReducer from './vendorsReducer';
 
-const rootReducer = combineReducers({
-  //   my:my_reducer
-});
+export interface RootState {
+  vendorsStore: ReturnType<typeof vendorsReducer>;
+}
+
+export const rootReducer: Reducer<RootState, any> = (root, action) => {
+  return {
+    vendorsStore: vendorsReducer(root?.vendorsStore, action),
+  };
+};
 
 export type AppState = ReturnType<typeof rootReducer>;
 
