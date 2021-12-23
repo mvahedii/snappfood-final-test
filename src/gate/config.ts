@@ -1,17 +1,18 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
 /*************************************
  *------* Setup Axios Configs *------*
  *************************************/
-
-const client = axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
+const client = axios;
+client.defaults.timeout = 15000;
+client.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 /*************************************
  *------* Request Interceptor *------*
  *************************************/
-
 client.interceptors.request.use(
-  (config) => {
+  async (config) => {
+    // *------* Set Headers *------*
     config.headers!["Accept"] = "application/json";
     config.headers!["Content-Type"] = "application/json";
     return config;
@@ -21,16 +22,8 @@ client.interceptors.request.use(
   }
 );
 
-export const gate = <T>(config: AxiosRequestConfig): Promise<T> => {
-  const source = axios.CancelToken.source();
-  const promise = client({ ...config, cancelToken: source.token }).then(
-    ({ data }) => data
-  );
+/**************************************
+ *------* Response Interceptor *------*
+ **************************************/
 
-  // @ts-ignore
-  promise.cancel = () => {
-    source.cancel("Query was cancelled");
-  };
-
-  return promise;
-};
+export default client;
