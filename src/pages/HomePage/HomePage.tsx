@@ -1,13 +1,13 @@
-import React from "react";
-import { Button } from "../../components/Button";
-import { useNavigate } from "react-router-dom";
-import { strings } from "../../utils/constants/strings";
-import "./HomePage.scss";
+import React from 'react';
+import {Button} from '../../components/';
+import {useNavigate} from 'react-router-dom';
+import {strings} from '../../utils/constants/strings';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const navigate = useNavigate();
   const handlePushToVendorPage = () => {
-    navigate("/vendors");
+    navigate('/vendors');
   };
 
   return (

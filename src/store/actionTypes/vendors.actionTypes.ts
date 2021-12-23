@@ -15,7 +15,7 @@ export interface GetVendorsRequestAction {
 export const GET_VENDORS_SUCCESS = ACTION_TYPE.GET_VENDORS_SUCCESS;
 export interface GetVendorsSuccessAction {
   type: typeof GET_VENDORS_SUCCESS;
-  data: { totalNumberOfVendors: number; restaurants: Restaurant[] };
+  data: { totalNumberOfVendors: number; restaurants: Restaurant[], openCount:number };
 }
 
 export const GET_VENDORS_FAILURE = ACTION_TYPE.GET_VENDORS_FAILURE;

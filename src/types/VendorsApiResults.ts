@@ -3,16 +3,10 @@ export interface VendorsApiResults {
   data: {
     count: number;
     open_count: number;
-    finalResult: [
-      {
-        type: string;
-        data: string;
-      },
-      {
-        type: string;
-        data: Restaurant[];
-      }
-    ];
+    finalResult: {
+      type: string;
+      data: Restaurant | string;
+    }[];
   };
 }
 
@@ -89,7 +83,7 @@ export interface Restaurant {
       allDay: boolean;
       startHour: string;
       stopHour: string;
-    }
+    },
   ];
   minOrder: number;
   address: string;
@@ -141,7 +135,7 @@ export interface Restaurant {
     {
       id: number;
       title: string;
-    }
+    },
   ];
   preOrderEnabled: boolean;
   vendorType: string;
@@ -199,7 +193,7 @@ export interface Restaurant {
       timeDifference: number;
       imageType: string;
       userType: string;
-    }
+    },
   ];
   menuImage: [];
   countReview: number;

@@ -1,13 +1,18 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "./pages";
+import React from 'react';
+import {Provider} from 'react-redux';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import store from './store';
+import {HomePage, Vendors} from './pages';
 
 export const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/vendors" element={<Vendors />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 };

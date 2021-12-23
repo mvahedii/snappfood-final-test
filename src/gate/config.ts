@@ -5,7 +5,6 @@ import axios from "axios";
  *************************************/
 const client = axios;
 client.defaults.timeout = 15000;
-client.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 /*************************************
  *------* Request Interceptor *------*

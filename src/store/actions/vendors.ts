@@ -11,6 +11,7 @@ export const getVendors = (page: number): actions.GetVendorsRequestAction => {
 export const getVendorsSuccess = (data: {
   totalNumberOfVendors: number;
   restaurants: Restaurant[];
+  openCount:number;
 }): actions.GetVendorsSuccessAction => {
   return {
     type: actions.GET_VENDORS_SUCCESS,
