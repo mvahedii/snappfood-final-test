@@ -1,6 +1,13 @@
 import React from "react";
-import { Test } from "./components/Test";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from "./pages";
 
 export const App = () => {
-  return <Test />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
