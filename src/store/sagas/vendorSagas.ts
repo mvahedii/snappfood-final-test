@@ -1,5 +1,5 @@
 import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
-import {Restaurant, VendorsApiResults} from '../../types/VendorsApiResults';
+import {Restaurant, VendorsApiResults} from '../../types/vendorsApiResults';
 import {fetchVendorsList} from '../../gate';
 import * as actionCreators from '../actions/vendors';
 import * as actionTypes from '../actionTypes/vendors.actionTypes';

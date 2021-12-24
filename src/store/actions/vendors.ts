@@ -1,5 +1,5 @@
 import * as actions from "../actionTypes/vendors.actionTypes";
-import { Restaurant } from "../../types/VendorsApiResults";
+import { Restaurant } from "../../types/vendorsApiResults";
 
 export const getVendors = (page: number): actions.GetVendorsRequestAction => {
   return {

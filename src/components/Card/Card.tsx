@@ -1,43 +1,32 @@
 import React from 'react';
+import {strings} from '../../utils/constants/strings';
+import {digitsToPersian} from '../../utils/digitsToPersian';
+import {CardTypes} from '../../types/card';
 import './styles.scss';
 
-export const Card = () => {
+export const Card: React.FC<CardTypes> = (props) => {
+  const fragmentedDescription = props.description.slice(0, 29) + '...';
+  const persianNumber = digitsToPersian(props.deliveryFee.toString());
+  const deliveryFee = `${persianNumber} ${strings.vendors.tomans}`;
   return (
-    <div className="card__wrapper">
-      <a className="vendor_card__wrapper">
-        <section className="vendor_card">
-          <header className="vendor_card__header">
-            <div className="vendor_card__headerbar">
-              <img
-                src="https://static.snapp-food.com/350x233/uploads/images/vendors/covers/5f54c47d39937.jpg"
-                alt=""
-                className="vendor_card__header_img"
-              />
-            </div>
-            <div>
-              <img
-                src="https://static.snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/5f03f6a30f682.jpg"
-                alt=""
-                
-              />
-            </div>
-          </header>
-          <div>
-            <div>
-              <div>
-                <h3></h3>
-                <div>
-                  <div>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              </div>
-              <div></div>
-            </div>
-          </div>
-        </section>
-      </a>
+    <div className="card">
+      <div className="head-card">
+        <img className="logo" src={props.logoImage} alt={props.title} />
+      </div>
+
+      <div className="img-mask">
+        <img src={props.coverImage} alt={props.title} />
+      </div>
+
+      <div className="card-content">
+        <h3 className="title typography">{props.title}</h3>
+        {props.description && (
+          <h5 className="description typography">{fragmentedDescription}</h5>
+        )}
+        <span className="price">
+          {strings.vendors.express} : {deliveryFee}
+        </span>
+      </div>
     </div>
   );
 };

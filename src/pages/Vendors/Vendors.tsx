@@ -2,15 +2,16 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getVendors} from '../../store/actions/vendors';
 import {RootState} from '../../store/reducers/rootReducer';
-import {Card} from '../../components';
+import {Card, Spinner} from '../../components';
+import './style.scss';
 
 export const Vendors = () => {
   const dispatch = useDispatch();
   const [pageNum, setPageNum] = useState(0);
   const [lastElement, setLastElement] = useState<HTMLDivElement | null>(null);
-  console.log('PAGE_NUM', pageNum);
-  const vendorsState = useSelector((state: RootState) => state.vendorsStore);
-
+  const {totalNumberOfVendors, restaurants, isLoading} = useSelector(
+    (state: RootState) => state.vendorsStore,
+  );
   const observer = useRef(
     new IntersectionObserver((entries) => {
       const first = entries[0];
@@ -21,7 +22,7 @@ export const Vendors = () => {
   );
 
   useEffect(() => {
-    if (pageNum <= vendorsState.totalNumberOfVendors) {
+    if (pageNum <= Math.ceil(totalNumberOfVendors / 10)) {
       dispatch(getVendors(pageNum));
     }
   }, [pageNum]);
@@ -43,36 +44,28 @@ export const Vendors = () => {
 
   return (
     <>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div>
-        <Card />
-      </div>
-      <div ref={setLastElement}>
-        <Card />
-      </div>
+      {Object.entries(restaurants).map((restaurant, index) => {
+        return (
+          <div
+            className="card_wrapper"
+            ref={setLastElement}
+            key={restaurant[1].id}
+          >
+            <Card
+              coverImage={restaurant[1].backgroundImage}
+              logoImage={restaurant[1].logo}
+              title={restaurant[1].title}
+              description={restaurant[1].description}
+              deliveryFee={restaurant[1].deliveryFee}
+            />
+          </div>
+        );
+      })}
+      {isLoading && <Spinner />}
+
+      {!isLoading && pageNum <= Math.ceil(totalNumberOfVendors / 10) && (
+        <div ref={setLastElement} style={{background: 'transparent'}}></div>
+      )}
     </>
   );
 };

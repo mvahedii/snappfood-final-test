@@ -1,53 +1,117 @@
-.card__wrapper {
-  height: 260px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card {
+  position: relative;
+  z-index: 1;
+  margin: 1rem 0;
+  display: block;
+  background: transparent;
+  min-width: 270px;
+  max-width: 250px;
+  box-shadow: 20px 20px 30px -20px #00000040;
 }
 
-.vendor_card__wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.vendor_card {
-  height: 248px;
-  max-width: 567px;
+.card-content {
+  clear: both;
+  max-width: 250px;
   background-color: #fff;
-  direction: rtl;
-  border-radius: 6px;
-  border: solid 0.5px gray;
-  width: calc(100% - 32px);
+  padding: 20px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
-.vendor_card__header {
-  position: relative;
+.head-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.vendor_card__headerbar {
-  width: inherit;
+.img-mask {
+  height: 170px;
   overflow: hidden;
-  position: relative;
-  height: 134px;
-  overflow: unset;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
-.vendor_card__header_img {
-  height: inherit;
-  object-fit: cover;
-  border-radius: 6px 6px 0 0;
-  filter: brightness(0.96);
-  opacity: 1;
-}
-
-.vendor_card__header_smimg {
+.img-mask > img {
+  display: block;
   width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  border: 1px solid gray;
+  z-index: 1;
+  height: 135px;
+}
+
+.rate {
+  position: absolute;
+  height: 17px;
+  padding: 10px;
+  background-color: #ffffff85;
+  border-radius: 20px;
+  font-size: 12px;
+  max-width: 150px;
+  width: 110px;
+  line-height: 1.5;
+  text-align: center;
+  top: 15px;
+  left: 20px;
+  box-shadow: 20px 20px 30px -20px #00000040;
+}
+
+.rate > i:hover {
+  color: #ff6a00;
+}
+
+.rate > i {
+  font-size: 14px;
+  clear: both;
+  float: left;
+  position: relative;
+  left: 10%;
+  transition: 0.3s color;
+  cursor: pointer;
+}
+
+.logo {
+  position: absolute;
+  right: 20px;
+  bottom: 120px;
+  line-height: 1.5;
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff85;
+  border-radius: 10%;
+  text-align: center;
+  font-size: 14px;
+  transition: 0.3s background-color, color;
+  box-shadow: 20px 20px 30px -20px #00000040;
+}
+
+.price {
+  float: right;
+  height: 17px;
+  min-width: 140px;
+  max-width: 170px;
+  width: 110px;
+  padding: 10px;
+  background-color: #e91e63;
+  border-radius: 20px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-family: 'Shabnam';
+  color: white;
+}
+
+.title {
+  margin: 0.5rem 0;
+}
+
+.typography {
+  font-size: 14px;
+  text-align: right;
+  font-family: 'Shabnam';
+}
+
+.description {
+  font-size: 11px;
+  margin: 0.5rem 0;
+  direction: rtl;
 }

@@ -1,4 +1,4 @@
-import {VendorsApiResults} from '../types/VendorsApiResults';
+import {VendorsApiResults} from '../types/vendorsApiResults';
 import client from './config';
 import {APIURLS} from '../utils/constants/apiUrl';
 
