@@ -1,4 +1,4 @@
-import { Restaurant } from "../../types/VendorsApiResults";
+import { Restaurant } from "../../types/vendorsApiResults";
 
 export enum ACTION_TYPE {
   GET_VENDORS_REQUEST = "GET_VENDORS_REQUEST",

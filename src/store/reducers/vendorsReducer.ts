@@ -1,4 +1,4 @@
-import {Restaurant} from '../../types/VendorsApiResults';
+import {Restaurant} from '../../types/vendorsApiResults';
 import * as actions from '../actionTypes/vendors.actionTypes';
 
 export interface VendorsState {
@@ -33,6 +33,7 @@ export default function vendorsReducer(
         ...state,
         totalNumberOfVendors: action.data.totalNumberOfVendors,
         openCount: action.data.openCount,
+        isLoading: false,
         restaurants: {
           ...state.restaurants,
           ...action.data.restaurants.reduce(
