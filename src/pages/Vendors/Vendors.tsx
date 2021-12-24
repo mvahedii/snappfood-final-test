@@ -2,19 +2,20 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getVendors} from '../../store/actions/vendors';
 import {RootState} from '../../store/reducers/rootReducer';
+import {Card} from '../../components';
 
 export const Vendors = () => {
   const dispatch = useDispatch();
   const [pageNum, setPageNum] = useState(0);
-  const [lastElement, setLastElement] = useState(null);
-
+  const [lastElement, setLastElement] = useState<HTMLDivElement | null>(null);
+  console.log('PAGE_NUM', pageNum);
   const vendorsState = useSelector((state: RootState) => state.vendorsStore);
 
   const observer = useRef(
     new IntersectionObserver((entries) => {
       const first = entries[0];
       if (first.isIntersecting) {
-        setPageNum((no) => no + 10);
+        setPageNum((no) => no + 1);
       }
     }),
   );
@@ -40,5 +41,38 @@ export const Vendors = () => {
     };
   }, [lastElement]);
 
-  return <> </>;
+  return (
+    <>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div>
+        <Card />
+      </div>
+      <div ref={setLastElement}>
+        <Card />
+      </div>
+    </>
+  );
 };
